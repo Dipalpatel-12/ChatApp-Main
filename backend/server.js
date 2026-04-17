@@ -17,14 +17,16 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: process.env.CLIENT_URL,
+    origin: ['http://localhost:3000', 'http://localhost:3001' ,'http://192.168.1.77:3000'],
     methods: ['GET', 'POST'],
   },
 });
 
 // ── Middlewares ──
 app.use(helmet());
-app.use(cors({ origin: process.env.CLIENT_URL }));
+app.use(cors({
+  origin: ['http://localhost:3000','http://localhost:3001', 'http://192.168.1.77:3000']
+}));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
@@ -40,6 +42,6 @@ app.use('/api/messages', messageRoutes);
 socketHandler(io);
 
 // ── Start ──
-server.listen(process.env.PORT, () => {
+server.listen(process.env.PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${process.env.PORT}`);
 });
