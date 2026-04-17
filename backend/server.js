@@ -17,7 +17,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ['http://localhost:3000', 'http://localhost:3001' ,'http://192.168.1.77:3000'],
+    origin: ['http://localhost:3000', 'http://localhost:3001', 'https://chat-app-main-seven.vercel.app' ,'http://192.168.1.77:3000'],
     methods: ['GET', 'POST'],
   },
 });
@@ -25,7 +25,7 @@ const io = new Server(server, {
 // ── Middlewares ──
 app.use(helmet());
 app.use(cors({
-  origin: ['http://localhost:3000','http://localhost:3001', 'http://192.168.1.77:3000']
+  origin: ['http://localhost:3000','http://localhost:3001','https://chat-app-main-seven.vercel.app' , 'http://192.168.1.77:3000']
 }));
 app.use(morgan('dev'));
 app.use(express.json());
