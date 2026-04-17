@@ -1,4 +1,4 @@
-const BASE = "process.env.NEXT_PUBLIC_BACKEND_URL;";
+const BASE = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 export const joinUser = async (name) => {
   const res = await fetch(`${BASE}/api/users/join`, {
