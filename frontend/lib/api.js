@@ -1,4 +1,4 @@
-const BASE = "http://192.168.1.77:5001";
+const BASE = "process.env.NEXT_PUBLIC_BACKEND_URL;";
 
 export const joinUser = async (name) => {
   const res = await fetch(`${BASE}/api/users/join`, {
